@@ -17,3 +17,15 @@ app.use(express.json())
 
 // Use logger middleware
 app.use(logger('dev'))
+
+// Todo routes
+
+app.use('/todos', todoController)
+
+// PORT
+
+app.set("port", process.env.PORT || 8080);
+
+app.listen(app.get('port'), () => {
+    console.log(`fries activated : ${app.get("port")}`);
+});
