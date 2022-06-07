@@ -1,6 +1,6 @@
 const mongoose = require('./../connection')
 
-const timeSchema = new mongoose.schema({
+const timeSchema = new mongoose.Schema({
     timeOfDay: String,
     tasks: [{
         ref: "Todo",
