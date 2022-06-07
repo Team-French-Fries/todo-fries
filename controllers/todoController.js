@@ -11,6 +11,13 @@ router.get('/', function (req, res) {
     .then(todos => res.status(200).json({todos: todos}))
 })
 
+//Get todo by name
+// router.get('/:taskName', function (req, res) {
+//     Todo.find()
+//         .then(todo => res.status(200).json({taskName: todo}))
+//         console.log(res)
+// })
+
 // Create a Todo
 router.post('/', function(req, res){
     const data = req.body
