@@ -1,4 +1,5 @@
 const express = require("express");
+const todo = require("./../models/todo");
 const Todo = require(`./../models/todo`)
 
 const router = express.Router();
@@ -9,6 +10,10 @@ router.get('/', function (req, res) {
     Todo.find()
     // Return todos as json
     .then(todos => res.status(200).json({todos: todos}))
+})
+
+router.get('/:id', function (req, res) {
+    Todo.findById(req.params.id).then(todo => res.json({todo: todo}))
 })
 
 //Get todo by name
