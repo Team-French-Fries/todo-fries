@@ -5,9 +5,11 @@ const Time = require('./../models/time')
 const router = express.Router();
 
 // GET /Times
-router.get('/', function (req, res) {
+router.get('/', async (req, res) => {
     // Find All todos
     Time.find()
+    // Populate times with Todo data
+    .populate("tasks")
     // Return todos as json
     .then(times => res.status(200).json({times: times}))
 })
