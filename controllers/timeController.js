@@ -5,9 +5,11 @@ const Time = require('./../models/time')
 const router = express.Router();
 
 // GET /Times
-router.get('/', function (req, res) {
+router.get('/', async (req, res) => {
     // Find All todos
     Time.find()
+    // Populate times with Todo data
+    .populate("tasks")
     // Return todos as json
     .then(times => res.status(200).json({times: times}))
 })
@@ -19,7 +21,7 @@ router.post('/', function(req, res){
     .then((time => res.status(201).json({time: time})))
 })
 
-//Update a Time
+// Update a Time
 router.patch('/:id', function(req, res) {
     Time.findByIdAndUpdate(req.params.id, req.body, {new: true})
     .then(time => res.status(200).json({time: time}))
@@ -31,7 +33,5 @@ router.delete('/:id', function(req, res) {
         res.json({data: time})
     })
 })
-
-
 
 module.exports = router;
